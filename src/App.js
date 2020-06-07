@@ -7,14 +7,19 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      search: ""
+      search: "test"
     }
+  }
+
+  handleChange = (event) => {
+    const {name, value} = event.target
+    this.setState({ [name]: value })
   }
 
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar state={this.state} handleChange={this.handleChange}/>
         <ListItems />
       </div>
     )

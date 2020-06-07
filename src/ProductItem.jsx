@@ -4,7 +4,7 @@ function ProductItem(props) {
     return (
         <div className="item">
             <h2>{props.data.name}</h2>
-            <span>IMAGE</span>
+            <img src={props.data.img} alt=""/>
             <h3>Price: {props.data.price}€</h3>
         </div>
     )
