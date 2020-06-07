@@ -3,10 +3,12 @@ import ProductItem from './ProductItem'
 import Data from './data'
 
 function ListItems(props) {
-    const arrayProducts = Data.map(data => <ProductItem data={data}/>)
+    const filteredArray = Data.filter(element => element.name.toLowerCase()
+    .includes(props.state.search.toLowerCase())).map(data => <ProductItem data={data}/>)
+
     return (
         <div className="products_cont">
-            {arrayProducts}
+            {filteredArray}
         </div>
     )
 }

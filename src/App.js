@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      search: "test"
+      search: ""
     }
   }
 
@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <div>
         <SearchBar state={this.state} handleChange={this.handleChange}/>
-        <ListItems />
+        <ListItems state={this.state}/>
       </div>
     )
   }
