@@ -1,29 +1,22 @@
 import React from 'react';
 import './App.css';
-import SearchBar from './SearchBar'
-import ListItems from './ListItems'
+import Search from './components/Search'
+import Home from './components/Home'
+import { Switch, Route } from 'react-router-dom';
+import Navbar from './components/Navbar'
+import Details from './components/Details'
 
-class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      search: ""
-    }
-  }
-
-  handleChange = (event) => {
-    const {name, value} = event.target
-    this.setState({ [name]: value })
-  }
-
-  render() {
+function App() {
     return (
       <div>
-        <SearchBar state={this.state} handleChange={this.handleChange}/>
-        <ListItems state={this.state}/>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/search" component={Search}></Route>
+          <Route path="/details" component={Details}></Route>
+        </Switch>
       </div>
     )
-  }
 }
 
 export default App;
