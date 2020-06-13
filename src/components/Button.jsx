@@ -14,6 +14,6 @@ const StyledButton = styled.button`
 
 export const Button = (props) => {
     return (
-        <StyledButton>{props.text}</StyledButton>
+        <StyledButton onClick={props.onClick}>{props.text}</StyledButton>
     )
 }

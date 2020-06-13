@@ -5,9 +5,11 @@ import Home from './components/Home'
 import { Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import Details from './components/Details'
+import { StateProvider } from './context'
 
 function App() {
     return (
+      <StateProvider>
       <div>
         <Navbar />
         <Switch>
@@ -16,6 +18,7 @@ function App() {
           <Route path="/details" component={Details}></Route>
         </Switch>
       </div>
+      </StateProvider>
     )
 }
 
