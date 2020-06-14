@@ -1,47 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
-import colors from '../colors'
 import {Button} from './Button'
 import { useState } from 'react'
 import userData from '../data/userData'
 import {LoginConsumer} from '../loginContext'
 import { useContext } from 'react'
-
-const StyledForm = styled.form`
-    background: ${colors.lightBlue};
-    width: 15rem;
-    border-radius: 3px;
-    margin: 3vh auto;
-    padding: 2vh 4vw;
-`
-
-const StyledLabel = styled.label`
-display: flex;
-flex-direction: column;
-margin-bottom: 3rem;
-`
-
-const StyledInput = styled.input`
-    height: 2rem;
-    margin-top: 0.3rem;
-    border: 2px solid ${colors.green};
-    background: rgba(78, 190, 158, 0.2);
-    opacity: 0.7;
-    border-radius: 3px;
-    padding-left: 0.4rem;
-    font-size: 1.07rem;
-    color: ${colors.black};
-    &:focus {
-        background: rgba(78, 190, 158, 0.3);
-        opacity: 1;
-    }
-`
-const StyledSpanError = styled.span`
-    display: none;
-    font-size: 0.8rem;
-    margin-top: 0.1rem;
-    color: red;
-`
+import { Link } from 'react-router-dom'
+import { StyledForm, StyledLabel, StyledInput, StyledSpanError } from './styles/StyledAuth'
 
 export default function SignIn() {
     const [username, setUsername] = useState("")
@@ -91,6 +55,7 @@ export default function SignIn() {
             <StyledSpanError id="spanPasswordError">Contraseña incorrecta</StyledSpanError>
             </StyledLabel>
             <Button text="LOG IN" />
+            <Link to="/signup">¿No tienes cuenta en Rented?</Link>
         </StyledForm>
     )
 }

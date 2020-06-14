@@ -1,7 +1,7 @@
 const userData = [
     {
         "userId": 1,
-        "Name": "Cobby Kalinsky",
+        "name": "Cobby Kalinsky",
         "user": "ckalinsky0",
         "password": "test123",
         "email": "ckalinsky0@tiny.cc",
@@ -10,7 +10,7 @@ const userData = [
         "profileImg": "https://robohash.org/pariaturvoluptastotam.png?size=200x200&set=set1"
       }, {
         "userId": 2,
-        "Name": "Norry Reef",
+        "name": "Norry Reef",
         "user": "nreef1",
         "password": "test123",
         "email": "nreef1@wix.com",
@@ -19,7 +19,7 @@ const userData = [
         "profileImg": "https://robohash.org/quisetrerum.png?size=200x200&set=set1"
       }, {
         "userId": 3,
-        "Name": "Cicely Sore",
+        "name": "Cicely Sore",
         "user": "csore2",
         "password": "test123",
         "email": "csore2@flickr.com",

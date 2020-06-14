@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faComment } from '@fortawesome/free-solid-svg-icons'
 import userData from '../data/userData'
+import { Redirect } from 'react-router-dom'
 
 export default function Details() {
     const [selectedItem,] = useContext(StateConsumer)
@@ -17,7 +18,7 @@ export default function Details() {
     const [selectedUser] = getUserInfo(userId)
     if (name === undefined) {
         return (
-            <h1>No item selected</h1>
+            <Redirect to="/" />
         )
     }
     return (

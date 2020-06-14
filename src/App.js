@@ -8,6 +8,7 @@ import Details from './components/Details'
 import SignIn from './components/SignIn'
 import { StateProvider } from './context'
 import { LoginProvider } from './loginContext'
+import SignUp from './components/SignUp';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/search" component={Search}></Route>
           <Route path="/details" component={Details}></Route>
           <Route path="/signin" component={SignIn}></Route>
+          <Route path="/signup" component={SignUp}></Route>
         </Switch>
       </div>
       </LoginProvider>
