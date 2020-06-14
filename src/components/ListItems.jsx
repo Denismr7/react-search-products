@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductItem from './ProductItem'
-import Data from '../data'
+import Data from '../data/data'
 import styled from 'styled-components'
 
 const StyledItemsCont = styled.div`

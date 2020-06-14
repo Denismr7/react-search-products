@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
 const StyledNavbar = styled.nav`
@@ -46,6 +46,9 @@ export default function Navbar() {
             </Link>
             <Link to="/search">
                 <li><FontAwesomeIcon icon={faSearch} className="fa"/><span>Search</span></li>
+            </Link>
+            <Link to="/signin">
+                <li><FontAwesomeIcon icon={faUser} className="fa"/><span>Sign In</span></li>
             </Link>
         </ul>
         </StyledNavbar>

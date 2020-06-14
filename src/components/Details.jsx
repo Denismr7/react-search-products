@@ -3,11 +3,18 @@ import {StateConsumer} from '../context'
 import colors from '../colors'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faComment } from '@fortawesome/free-solid-svg-icons'
+import userData from '../data/userData'
 
 export default function Details() {
     const [selectedItem,] = useContext(StateConsumer)
-    const {name, price, img, description} = selectedItem
+    const {name, price, img, description, userId} = selectedItem
+
+    const getUserInfo = (id) => {
+        return userData.filter(user => user.userId === id)
+    }
+
+    const [selectedUser] = getUserInfo(userId)
     if (name === undefined) {
         return (
             <h1>No item selected</h1>
@@ -22,9 +29,13 @@ export default function Details() {
             <p>{description}</p>
         </div>
         <UserCont>
-            <h4>Usuario: GregMorrison34</h4>
-            <p>Registrado: 10 Ene 2019</p>
-            <p>Puntuación: <FontAwesomeIcon icon={faStar} className="fa" /> 4,4 / 5</p>
+            <img src={selectedUser.profileImg} alt="user"/>
+            <div>
+            <h4>{selectedUser.user}</h4>
+            <p>Miembro desde el {selectedUser.registrationDate}</p>
+            <p><FontAwesomeIcon icon={faStar} className="fa" /> {selectedUser.rating} / 5</p>
+            <Button>Mensaje<FontAwesomeIcon icon={faComment} className="fa" /></Button>
+            </div>
         </UserCont>
         </StyledDetailsCont>
     )
@@ -43,13 +54,34 @@ margin: 0 auto;
 `
 
 const UserCont = styled.div`
+    display: flex;
+    align-items: center;
     background: rgba(2, 89, 250, 0.3);
     border: 2px solid ${colors.blue};
-    padding: 1rem 6rem;
+    padding: 1rem 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
     border-radius: 5px;
     & .fa {
         color: goldenrod;
+    }
+    & img {
+        width: 120px;
+        height: 120px;
+        margin-right: 2rem;
+    }
+`
+const Button = styled.button`
+    background: rgba(250, 250, 250, 0.3);
+    border: 2px solid ${colors.blue};
+    color: ${colors.blue};
+    padding: 0.4rem 0.5rem;
+    font-size: 1.10rem;
+    width: 100%;
+    cursor: pointer;
+    & .fa {
+        color: ${colors.blue};
+        margin-left: 1rem;
+        font-size: 1.20rem;
     }
 `
