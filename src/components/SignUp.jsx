@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button} from './Button'
+import {StyledButton} from './styles/StyledButton'
 import { useState } from 'react'
 import userData from '../data/userData'
 import {LoginConsumer} from '../loginContext'
@@ -14,64 +14,85 @@ function SignUp() {
         email: "",
         password: "",
     })
-
+    const [repeatPassword, setRepeatPassword] = useState("")
     const handleChange = (event) => {
         const {name, value} = event.target;
         setSignUpForm({...signUpForm, [name]: value})
         if (name === "user" || name === "email") {
             if (!checkAvailability(name, value)) {
                 document.getElementById(`${name}Span`).style.display = "initial"
-                
             }
             else {
                 document.getElementById(`${name}Span`).style.display = "none"
             }
         }
     }
-    const handleCheckPassword = (event) => {
-        if (signUpForm.password !== event.target.value) {
-            document.getElementById("repeatPasswordSpan").style.display = "initial"
-            return false
-        }
-        else {
+    const checkPassword = (password, repeatPassword) => {
+        if (password === repeatPassword) {
             document.getElementById("repeatPasswordSpan").style.display = "none"
             return true
         }
+        else {
+            document.getElementById("repeatPasswordSpan").style.display = "initial"
+            return false
+        }
+    }
+    const handleRepeatPassword = (event) => {
+        const {value} = event.target;
+        setRepeatPassword(value)
     }
     const checkAvailability = (prop, value) => {
         const users = userData.filter(user => user[prop] === value)
-        if (users.length === 0) {
+        if (users.length === 0 && value.length >= 3) {
             return true
         }
         return false
     }
 
+    const handleSubmitForm = (event) => {
+        event.preventDefault()
+        const isPasswordCorrect = checkPassword(signUpForm.password, repeatPassword)
+        if (isPasswordCorrect && checkAvailability("user", signUpForm.user) && checkAvailability("email", signUpForm.email)) {
+            console.log("Everything is correct!")
+        }
+        else {
+            console.log("Something failed!");
+            
+        }
+    }
     return (
-        <StyledForm>
+        <StyledForm onSubmit={handleSubmitForm}>
+
         <StyledLabel htmlFor="name">
         Nombre completo
-        <StyledInput name="name" type="text" onChange={handleChange}/>
+        <StyledInput name="name" type="text" value={signUpForm.name} onChange={handleChange}/>
         </StyledLabel>
+
         <StyledLabel htmlFor="user">
         Usuario
-        <StyledInput name="user" type="text" onChange={handleChange}/>
-        <StyledSpanError id="userSpan">El usuario ya existe</StyledSpanError>
+        <StyledInput name="user" type="text" value={signUpForm.user} onChange={handleChange}/>
+        <StyledSpanError id="userSpan">El usuario no es válido o ya existe</StyledSpanError>
         </StyledLabel>
+
         <StyledLabel htmlFor="email">
         Email
-        <StyledInput name="email" type="email" onChange={handleChange}/>
-        <StyledSpanError id="emailSpan">El correo ya está en uso</StyledSpanError>
+        <StyledInput name="email" type="email" value={signUpForm.email} onChange={handleChange}/>
+        <StyledSpanError id="emailSpan">El correo no es válido o ya está en uso</StyledSpanError>
         </StyledLabel>
+
         <StyledLabel htmlFor="password">
         Contraseña
-        <StyledInput name="password" type="password" onChange={handleChange}/>
+        <StyledInput name="password" type="password" value={signUpForm.password} onChange={handleChange}/>
         </StyledLabel>
+
         <StyledLabel htmlFor="repeatPassword">
         Repetir contraseña
-        <StyledInput name="repeatPassword" type="password" onChange={handleCheckPassword}/>
+        <StyledInput name="repeatPassword" id="repeatPassword" type="password" value={repeatPassword} onChange={handleRepeatPassword}/>
         <StyledSpanError id="repeatPasswordSpan">Las contraseñas no coinciden</StyledSpanError>
         </StyledLabel>
-        <Button text="CREAR CUENTA" />
+
+        <StyledSpanError id="formSpan">Comprueba que los datos son correctos</StyledSpanError>
+        <StyledButton id="submitBtn">CREAR CUENTA</StyledButton>
         <Link to="/signin">Ya tengo cuenta en Rented</Link>
     </StyledForm>
     )

@@ -4,13 +4,14 @@ import { useState } from 'react'
 import userData from '../data/userData'
 import {LoginConsumer} from '../loginContext'
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { StyledForm, StyledLabel, StyledInput, StyledSpanError } from './styles/StyledAuth'
 
 export default function SignIn() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [login,setLogin] = useContext(LoginConsumer)
+    const [,setLogin] = useContext(LoginConsumer)
+    const history = useHistory()
 
     const handleChange = (event) => {
         const {name, value} = event.target
@@ -32,8 +33,7 @@ export default function SignIn() {
             }
             else {
                 setLogin(true)
-                console.log("Login context is: ", login);
-                
+                history.push("/")
             }
         }
     }
