@@ -48,7 +48,7 @@ align-items: center;
 width: 90%;
 margin: 0 auto;
 & img {
-    width: 500px;
+    width: 430px;
     height: auto;
 }
 `
