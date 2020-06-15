@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faSearch, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
+import {LoginConsumer} from '../loginContext'
 
 const StyledNavbar = styled.nav`
 background: whitesmoke;
@@ -25,6 +26,7 @@ width: 100%;
     align-items:center;
     width: 60%;
     justify-content: space-evenly;
+    cursor: pointer;
 }
  & .fa {
      font-size: 1.2rem;
@@ -37,6 +39,21 @@ width: 100%;
 `
 
 export default function Navbar() {
+    const [login, setLogin] = useContext(LoginConsumer)
+    const renderLogInOrOut = () => {
+        if (login) {
+            return (
+                <li onClick={() => setLogin(false)}><FontAwesomeIcon icon={faSignOutAlt} className="fa"/><span>Log Out</span></li>
+            )
+        }
+        else {
+            return (
+            <Link to="/signin">
+                <li><FontAwesomeIcon icon={faUser} className="fa"/><span>Sign In</span></li>
+            </Link>
+            )
+        }
+    }
     return (
         <StyledNavbar>
         <h1>Rented</h1>
@@ -47,9 +64,7 @@ export default function Navbar() {
             <Link to="/search">
                 <li><FontAwesomeIcon icon={faSearch} className="fa"/><span>Search</span></li>
             </Link>
-            <Link to="/signin">
-                <li><FontAwesomeIcon icon={faUser} className="fa"/><span>Sign In</span></li>
-            </Link>
+            {renderLogInOrOut()}
         </ul>
         </StyledNavbar>
     )

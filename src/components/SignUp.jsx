@@ -4,17 +4,20 @@ import { useState } from 'react'
 import userData from '../data/userData'
 import {LoginConsumer} from '../loginContext'
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { StyledForm, StyledLabel, StyledInput, StyledSpanError } from './styles/StyledAuth'
 
 function SignUp() {
     const [signUpForm, setSignUpForm] = useState({
+        userId: userData.length + 1,
         name: "",
         user: "",
         email: "",
         password: "",
     })
     const [repeatPassword, setRepeatPassword] = useState("")
+    const history = useHistory()
+    const [,setLogin] = useContext(LoginConsumer)
     const handleChange = (event) => {
         const {name, value} = event.target;
         setSignUpForm({...signUpForm, [name]: value})
@@ -53,11 +56,14 @@ function SignUp() {
         event.preventDefault()
         const isPasswordCorrect = checkPassword(signUpForm.password, repeatPassword)
         if (isPasswordCorrect && checkAvailability("user", signUpForm.user) && checkAvailability("email", signUpForm.email)) {
-            console.log("Everything is correct!")
+            document.getElementById("formSpan").style.display = "none"
+            userData.push(signUpForm) // This should be a POST request
+            setLogin(true)
+            history.push("/")
         }
         else {
             console.log("Something failed!");
-            
+            document.getElementById("formSpan").style.display = "initial"
         }
     }
     return (
