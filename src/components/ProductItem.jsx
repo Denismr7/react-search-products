@@ -1,29 +1,8 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
+import {StyledItem} from './styles/StyledProductItem'
 import {Button} from './Button'
-import colors from '../colors'
 import {Link} from 'react-router-dom'
 import { StateConsumer } from '../context'
-
-const StyledItem = styled.div`
-  background-color: white;
-  border: 1px solid ${colors.blue};
-  margin: 1vh;
-  padding: 3%;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: space-evenly;
-  box-shadow: 0px 4px 6px -1px rgba(0,0,0,0.3);
-  & img {
-      width: 100px;
-      margin: 0 auto;
-  }
-  & a button {
-      width: 100%;
-  }
-`
 
 function ProductItem(props) {
     const [, setSelectedItem] = useContext(StateConsumer)

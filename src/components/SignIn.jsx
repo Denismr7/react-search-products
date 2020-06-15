@@ -8,45 +8,46 @@ import { Link, useHistory } from 'react-router-dom'
 import { StyledForm, StyledLabel, StyledInput, StyledSpanError } from './styles/StyledAuth'
 
 export default function SignIn() {
-    const [username, setUsername] = useState("")
+    const [user, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [,setLogin] = useContext(LoginConsumer)
+    const [,setLogin, , setUserLog] = useContext(LoginConsumer)
     const history = useHistory()
 
     const handleChange = (event) => {
         const {name, value} = event.target
         document.getElementById("spanUserError").style.display = "none"
         document.getElementById("spanPasswordError").style.display = "none"
-        name === "username" ? setUsername(value) : setPassword(value)
+        name === "user" ? setUsername(value) : setPassword(value)
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-        const user = getUserInfo(username);
+        const tempUser = getUserInfo("user",user);
         let success = false;
-        if (user === undefined) {
+        if (tempUser === undefined) {
             document.getElementById("spanUserError").style.display = "initial"
         }
         else {
-            success = user.password === password ? true : false;
+            success = tempUser.password === password ? true : false;
             if (!success) {
                 document.getElementById("spanPasswordError").style.display = "initial"
             }
             else {
                 setLogin(true)
+                setUserLog(tempUser)
                 history.push("/")
             }
         }
     }
-    const getUserInfo = (username) => {
-        const [user] = userData.filter(user => user.user === username)
-        return user
+    const getUserInfo = (propToSearch, value) => {
+        const [tempUser] = userData.filter(element => element[propToSearch] === value)
+        return tempUser
     }
 
     return (
         <StyledForm onSubmit={handleSubmit}>
-            <StyledLabel htmlFor="username">
+            <StyledLabel htmlFor="user">
             Username
-            <StyledInput name="username" type="text" onChange={handleChange}/>
+            <StyledInput name="user" type="text" onChange={handleChange}/>
             <StyledSpanError id="spanUserError">El usuario no existe</StyledSpanError>
             </StyledLabel>
             <StyledLabel htmlFor="password">
