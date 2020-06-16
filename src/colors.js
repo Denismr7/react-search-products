@@ -1,7 +1,7 @@
 const colors = {
-    blue: "rgb(2, 89, 250)",
-    lightBlue: "#bbc5ff",
+    important: "rgb(2, 89, 250)",
+    accent: "#bbc5ff",
     green: "#4ebe9e",
-    black: "#1b1a28",
+    main: "rgba(27, 26, 40, 0.9)",
 }
 export default colors

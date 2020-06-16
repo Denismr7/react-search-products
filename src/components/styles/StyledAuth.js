@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import colors from '../../colors'
 
 export const StyledForm = styled.form`
-    background: ${colors.lightBlue};
+    background: ${colors.main};
     display: flex;
     flex-direction: column;
     width: 20rem;
@@ -10,7 +10,7 @@ export const StyledForm = styled.form`
     margin: 3vh auto;
     padding: 2vh 4vw;
     & a {
-        color: ${colors.black};
+        color: ${colors.green};
         text-decoration: none;
         font-size: 0.8rem;
         margin: 1rem auto 0 auto;
@@ -20,6 +20,7 @@ export const StyledForm = styled.form`
 
 export const StyledLabel = styled.label`
 display: flex;
+color: ${colors.accent};
 flex-direction: column;
 margin-bottom: 3rem;
 `
@@ -33,7 +34,7 @@ export const StyledInput = styled.input`
     border-radius: 3px;
     padding-left: 0.4rem;
     font-size: 1.07rem;
-    color: ${colors.black};
+    color: ${colors.accent};
     &:focus {
         background: rgba(78, 190, 158, 0.3);
         opacity: 1;

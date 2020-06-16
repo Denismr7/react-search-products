@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import colors from '../../colors'
 
 export const StyledItem = styled.div`
-  background-color: white;
-  border: 1px solid ${colors.black};
+  background-color: transparent;
+  border: 1px solid ${colors.main};
   margin: 1vh;
   padding: 3%;
   border-radius: 3px;

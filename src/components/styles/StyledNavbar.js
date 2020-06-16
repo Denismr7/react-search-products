@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import colors from '../../colors'
 
 export const StyledNavbar = styled.nav`
-background: ${colors.black};
-color: ${colors.lightBlue};
+background: ${colors.main};
+color: ${colors.accent};
 display: flex;
 justify-content: space-between;
 position: sticky;
