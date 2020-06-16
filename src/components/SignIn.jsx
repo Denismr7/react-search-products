@@ -1,10 +1,10 @@
 import React from 'react'
-import {Button} from './Button'
 import { useState } from 'react'
 import userData from '../data/userData'
 import {LoginConsumer} from '../loginContext'
 import { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import {StyledButton} from './styles/StyledButton'
 import { StyledForm, StyledLabel, StyledInput, StyledSpanError } from './styles/StyledAuth'
 
 export default function SignIn() {
@@ -55,7 +55,7 @@ export default function SignIn() {
             <StyledInput name="password" type="password" onChange={handleChange}/>
             <StyledSpanError id="spanPasswordError">Contraseña incorrecta</StyledSpanError>
             </StyledLabel>
-            <Button text="LOG IN" />
+            <StyledButton primary>LOG IN</StyledButton>
             <Link to="/signup">¿No tienes cuenta en Rented?</Link>
         </StyledForm>
     )

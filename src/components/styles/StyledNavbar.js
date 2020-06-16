@@ -1,7 +1,9 @@
 import styled from 'styled-components'
+import colors from '../../colors'
 
 export const StyledNavbar = styled.nav`
-background: whitesmoke;
+background: ${colors.black};
+color: ${colors.lightBlue};
 display: flex;
 justify-content: space-between;
 position: sticky;
@@ -12,7 +14,7 @@ width: 100%;
 }
 
 & a {
-    color: black;
+    color: inherit;
     text-decoration: none;
 }
 & ul {

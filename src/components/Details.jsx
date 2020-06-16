@@ -57,8 +57,8 @@ margin: 0 auto;
 const UserCont = styled.div`
     display: flex;
     align-items: center;
-    background: rgba(2, 89, 250, 0.3);
-    border: 2px solid ${colors.blue};
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid ${colors.black};
     padding: 1rem 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -73,7 +73,7 @@ const UserCont = styled.div`
     }
 `
 const Button = styled.button`
-    background: rgba(250, 250, 250, 0.3);
+    background: ${colors.lightBlue};
     border: 2px solid ${colors.blue};
     color: ${colors.blue};
     padding: 0.4rem 0.5rem;

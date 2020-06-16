@@ -1,12 +1,12 @@
 import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faSearch, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faSearch, faUser} from '@fortawesome/free-solid-svg-icons'
 import {StyledNavbar} from './styles/StyledNavbar'
 import {LoginConsumer} from '../loginContext'
 
 export default function Navbar() {
-    const [login, setLogin] = useContext(LoginConsumer)
+    const [login] = useContext(LoginConsumer)
     const renderLogInOrOut = () => {
         if (login) {
             return (
@@ -14,7 +14,6 @@ export default function Navbar() {
                 <Link to="/profile">
                     <li><FontAwesomeIcon icon={faUser} className="fa"/><span>Profile</span></li>
                 </Link>
-                <li onClick={() => setLogin(false)}><FontAwesomeIcon icon={faSignOutAlt} className="fa"/><span>Log Out</span></li>
                 </>
             )
         }

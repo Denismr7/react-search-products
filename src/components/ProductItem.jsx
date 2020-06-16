@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import {StyledItem} from './styles/StyledProductItem'
-import {Button} from './Button'
+import {StyledButton} from './styles/StyledButton'
 import {Link} from 'react-router-dom'
 import { StateConsumer } from '../context'
 
@@ -13,7 +13,7 @@ function ProductItem(props) {
             <h2>{props.data.name}</h2>
             <h3>Pecio: {props.data.price}€/día</h3>
             <Link to="/details" data={props.data.id}>
-            <Button text="+INFO" onClick={() => setSelectedItem(props.data)}/>
+            <StyledButton onClick={() => setSelectedItem(props.data)} primary>+INFO</StyledButton>
             </Link>
         </StyledItem>
     )

@@ -1,13 +1,14 @@
 import React from 'react'
+import {StyledSearcContainer, StyledSearchBar} from './styles/StyledSearcBar'
 
 function SearchBar(props) {
     return (
-        <div className="searchBar_cont">
+        <StyledSearcContainer>
             <h1>¿Qué es lo que buscas?</h1>
-            <input className="searchBar" type="text" name="search"
+            <StyledSearchBar type="text" name="search"
             value={props.search} onChange={props.handleChange}
-            placeholder="i.e iPhone 11"/>
-        </div>
+            placeholder="i.e iPhone 11" />
+        </StyledSearcContainer>
     )
 }
 

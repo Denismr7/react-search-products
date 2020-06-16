@@ -3,10 +3,10 @@ import colors from '../../colors'
 
 export const StyledItem = styled.div`
   background-color: white;
-  border: 1px solid ${colors.blue};
+  border: 1px solid ${colors.black};
   margin: 1vh;
   padding: 3%;
-  border-radius: 10px;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   text-align: center;
