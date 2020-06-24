@@ -3,7 +3,7 @@ import React from 'react'
 export default function Home() {
     return (
         <div>
-            Hello from Home!
+            <h1>¡Ya queda poco!</h1>
         </div>
     )
 }

@@ -7,6 +7,8 @@ import { Link, useHistory } from 'react-router-dom'
 import {StyledButton} from './styles/StyledButton'
 import { StyledForm, StyledLabel, StyledInput, StyledSpanError } from './styles/StyledAuth'
 
+// userData as a DB Server
+
 export default function SignIn() {
     const [user, setUsername] = useState("")
     const [password, setPassword] = useState("")

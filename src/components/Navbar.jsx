@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faSearch, faUser} from '@fortawesome/free-solid-svg-icons'
 import {StyledNavbar} from './styles/StyledNavbar'
 import {LoginConsumer} from '../loginContext'
+const logo = require('../imgs/Logo1.svg')
 
 export default function Navbar() {
     const [login] = useContext(LoginConsumer)
@@ -27,7 +28,9 @@ export default function Navbar() {
     }
     return (
         <StyledNavbar>
-        <h1>Rented</h1>
+        <Link to="/">
+        <img src={logo} alt="logo"/>
+        </Link>
         <ul>
             <Link to="/">
                 <li><FontAwesomeIcon icon={faHome} className="fa" /><span>Home</span></li>

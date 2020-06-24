@@ -6,10 +6,12 @@ background: ${colors.main};
 color: ${colors.accent};
 display: flex;
 justify-content: space-between;
+align-items:center;
 position: sticky;
 top: 0;
 width: 100%;
-& h1 {
+& img {
+    width: 120px;
     margin-left: 0.9rem;
 }
 
