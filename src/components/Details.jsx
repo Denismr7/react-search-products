@@ -3,9 +3,10 @@ import {StateConsumer} from '../context'
 import colors from '../colors'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faComment } from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import userData from '../data/userData'
 import { Redirect } from 'react-router-dom'
+import ProductReservation from './ProductReservation'
 
 export default function Details() {
     const [selectedItem,] = useContext(StateConsumer)
@@ -35,9 +36,9 @@ export default function Details() {
             <h4>{selectedUser.user}</h4>
             <p>Miembro desde el {selectedUser.registrationDate}</p>
             <p><FontAwesomeIcon icon={faStar} className="fa" /> {selectedUser.rating} / 5</p>
-            <Button>Mensaje<FontAwesomeIcon icon={faComment} className="fa" /></Button>
             </div>
         </UserCont>
+        <ProductReservation />
         </StyledDetailsCont>
     )
 }
@@ -70,19 +71,5 @@ const UserCont = styled.div`
         width: 120px;
         height: 120px;
         margin-right: 2rem;
-    }
-`
-const Button = styled.button`
-    background: ${colors.lightBlue};
-    border: 2px solid ${colors.blue};
-    color: ${colors.blue};
-    padding: 0.4rem 0.5rem;
-    font-size: 1.10rem;
-    width: 100%;
-    cursor: pointer;
-    & .fa {
-        color: ${colors.blue};
-        margin-left: 1rem;
-        font-size: 1.20rem;
     }
 `
