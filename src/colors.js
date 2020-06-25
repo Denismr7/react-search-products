@@ -1,7 +1,7 @@
 const colors = {
     important: "#04C484",
     accent: "#eeeeee",
-    green: "#4ebe9e",
+    darkerImportant: "#327d68",
     main: "#393e46",
 }
 export default colors

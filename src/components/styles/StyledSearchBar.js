@@ -18,7 +18,7 @@ export const StyledSearchBar = styled.input`
   background-position: 95% center;
   background-size: 1rem;
   font-size: 1.5rem;
-  color: rgb(2, 89, 250);
+  color: ${colors.important};
   padding-left: 3vw;
   border-radius: 3px;
 `
