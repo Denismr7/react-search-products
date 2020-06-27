@@ -1,34 +1,37 @@
-import React, {useContext} from 'react'
-import {StateConsumer} from '../context'
+import React, {useState, useEffect} from 'react'
 import colors from '../colors'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import userData from '../data/userData'
-import { Redirect } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import ProductReservation from './ProductReservation'
+import { getUserInfo, getItemInfo } from '../helpers/helpers'
+
 
 export default function Details() {
-    const [selectedItem,] = useContext(StateConsumer)
-    const {name, price, img, description, userId} = selectedItem
+    const [product, setProduct] = useState("")
+    const params = useParams()
 
-    const getUserInfo = (id) => {
-        return userData.filter(user => user.userId === id)
-    }
+    useEffect(() => {
+        fetch("https://my-json-server.typicode.com/Denismr7/react-search-products/Data")
+            .then(response => response.json()).then(data => setProduct(getItemInfo(data, "id", Number(params.id))))
+    }, [params])
 
-    const [selectedUser] = getUserInfo(userId)
-    if (name === undefined) {
+    const [selectedUser] = getUserInfo(userData, product.userId)
+    if (product.name === undefined) {
         return (
-            <Redirect to="/" />
+            <h1>Loading...</h1>
         )
     }
+    else {
     return (
         <StyledDetailsCont>
-        <img src={img} alt="product"/>
+        <img src={product.img} alt="product"/>
         <div>
-            <h1>{name}</h1>
-            <h2>Precio: {price}€/día</h2>
-            <p>{description}</p>
+            <h1>{product.name}</h1>
+            <h2>Precio: {product.price}€/día</h2>
+            <p>{product.description}</p>
         </div>
         <UserCont>
             <img src={selectedUser.profileImg} alt="user"/>
@@ -41,6 +44,7 @@ export default function Details() {
         <ProductReservation />
         </StyledDetailsCont>
     )
+    }
 }
 
 const StyledDetailsCont = styled.div`

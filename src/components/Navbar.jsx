@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faSearch, faUser} from '@fortawesome/free-solid-svg-icons'
 import {StyledNavbar} from './styles/StyledNavbar'
 import {LoginConsumer} from '../loginContext'
-const logo = require('../imgs/Logo1.svg')
+const logo = require('../imgs/Logo1.png')
 
 export default function Navbar() {
     const [login] = useContext(LoginConsumer)
