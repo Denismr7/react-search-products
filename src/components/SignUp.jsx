@@ -6,10 +6,10 @@ import {LoginConsumer} from '../loginContext'
 import { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { StyledForm, StyledLabel, StyledInput, StyledSpanError } from './styles/StyledAuth'
+import axios from 'axios'
 
 function SignUp() {
     const [signUpForm, setSignUpForm] = useState({
-        userId: userData.length + 1,
         name: "",
         user: "",
         email: "",
@@ -57,7 +57,7 @@ function SignUp() {
         const isPasswordCorrect = checkPassword(signUpForm.password, repeatPassword)
         if (isPasswordCorrect && checkAvailability("user", signUpForm.user) && checkAvailability("email", signUpForm.email)) {
             document.getElementById("formSpan").style.display = "none"
-            userData.push(signUpForm) // This should be a POST request
+            axios.post("http://localhost:5000/users/add", signUpForm).then(res => console.log(res.data)) // This should be a POST request
             setLogin(true)
             history.push("/")
         }
